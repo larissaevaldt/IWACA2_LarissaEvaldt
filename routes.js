@@ -2,6 +2,11 @@ var express = require('express'),
 router = express.Router(),
 movieCtrl = require('./movie-controller');
 
+router.get('/', function(req, res) {
+    res.render('index');
+});
+
+
 router.post('/movies', movieCtrl.createMovie);
 router.get('/movies', movieCtrl.getMovies);
 router.get('/movies/:id', movieCtrl.getMovie);
