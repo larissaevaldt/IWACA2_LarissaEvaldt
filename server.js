@@ -7,7 +7,7 @@ mongoose = require('mongoose');
 
 var app = express();
 var port = 3000;
-var userCtrl = require('./user-controller');
+var movieCtrl = require('./movie-controller');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
