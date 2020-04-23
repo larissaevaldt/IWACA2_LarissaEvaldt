@@ -34,7 +34,7 @@ table, th, td {
  table {
      border-spacing: 0;
      border-collapse: collapse;
-     width:100%;
+     /* width:100%; */
 }
 
  td, th {
@@ -46,6 +46,7 @@ table, th, td {
  th {
      font-weight: bold;
 }
+
 #movieTable tr:hover {background-color: #ddd;}
 
 .selected {

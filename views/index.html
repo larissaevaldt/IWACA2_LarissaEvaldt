@@ -66,13 +66,13 @@
                 <div id="results" class="col-lg-8 text-center order-3"></div>
                 <div class="col-lg-4 text-center order-2">
                     <form enctype="application/json" action="/post/json" method="post">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <select class="form-control" name="sec_n">
                                 <option value="0">DVD-Blu-ray Releases</option>
                                 <option value="1">Top Rated Movies</option>
                                 <option value="2">Coming Soon</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <input class="form-control" type="text" name="title" placeholder="Movie Title" required>
                         </div>
@@ -113,11 +113,97 @@
                 </div>
             </div>
         </div>
+
+        <table id="movieTable" class="indent">
+            <thead>
+                <tr>
+					<th colspan="9">Select a movie from the menu below</th>
+				</tr>
+				<tr>
+					<th>Select</th>
+					<th>Title</th>
+					<th>Year</th>
+                    <th>Duration</th>
+					<th>Genre</th>
+					<th>Director</th>
+					<th>Stars</th>
+					<th>Rating</th>
+					<th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+            <!-- to be read from api -->
+            </tbody>
+        </table>
+
         <footer class="footer">
             <div class="container">
                 <span class="text-muted">&copy; 2019</span>
             </div>
         </footer>
+
+        <script>
+         
+            const api_url = "https://3000-e4e57fd6-d3c5-443b-8490-8370c21d4522.ws-eu01.gitpod.io/movies";
+            
+            async function getData() {
+                const response = await fetch(api_url);
+                const data = await response.json();
+                console.log(data);
+
+                if(data.length > 0){
+                               var temp = "";
+
+                               //------star for loop
+                               data.forEach((u)=>{
+                                   temp +='<tr>';
+                                   temp +='<td><input name="item0" type="checkbox" /></td>';
+                                   temp +='<td>'+u.title+'</td>';
+                                    temp +='<td>'+u.year+'</td>';
+                                    temp +='<td>'+u.duration+'</td>';
+                                     temp +='<td>'+u.genre+'</td>';
+                                      temp +='<td>'+u.director+'</td>';
+                                       temp +='<td>'+u.stars+'</td>';
+                                        temp +='<td>'+u.rating+'</td>';
+                                         temp +='<td>'+u.price+'</td></tr>';
+                               });
+
+                               document.getElementById("data").innerHTML = temp;
+                           }
+            }
+
+            getData();
+            
+
+           /*
+           fetch("https://3000-e4e57fd6-d3c5-443b-8490-8370c21d4522.ws-eu01.gitpod.io/movies").then(
+               res=>{
+                   res.json().then(
+                       data=>{
+                           console.log(data);
+                           if(data.length > 0){
+                               var temp = "";
+
+                               //------star for loop
+                               data.forEach((u)=>{
+                                   temp +='<tr>';
+                                   temp +='<td><input name="item0" type="checkbox" /></td>';
+                                   temp +='<td>'+u.title+'</td>';
+                                    temp +='<td>'+u.year+'</td>';
+                                     temp +='<td>'+u.genre+'</td>';
+                                      temp +='<td>'+u.director+'</td>';
+                                       temp +='<td>'+u.stars+'</td>';
+                                        temp +='<td>'+u.rating+'</td>';
+                                         temp +='<td>'+u.price+'</td></tr>';
+                               });
+
+                               document.getElementById("data").innerHTML = temp;
+                           }
+                       }
+                   )
+               });
+               */
+        </script>
 
         <!-- Bootstrap core JavaScript -->
         <script src="jquery/jquery.min.js"></script>
