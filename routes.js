@@ -6,7 +6,6 @@ router.get('/', function(req, res) {
     res.render('index');
 });
 
-
 router.post('/movies', movieCtrl.createMovie);
 router.get('/movies', movieCtrl.getMovies);
 router.get('/movies/:id', movieCtrl.getMovie);
