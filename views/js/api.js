@@ -1,7 +1,7 @@
 const api_url = "/movies";
 
-const button = document.getElementById('submit');
-button.addEventListener('click', async event => {
+const submit = document.getElementById('submit');
+submit.addEventListener('click', async event => {
     const title = document.getElementById('title').value;
     const year = document.getElementById('year').value;
     const duration = document.getElementById('duration').value;
@@ -24,6 +24,19 @@ button.addEventListener('click', async event => {
     console.log(json);
 });
 
+const deleteMovie = document.getElementById('delete');
+deleteMovie.addEventListener('click', async event => {
+    const id = document.getElementById('movieid').value;
+    console.log(id);
+    const options = {
+        method: 'DELETE',
+    };
+
+    
+    const response = await fetch('/movies/'+id, {method: "delete"});
+    const json = await response.json();
+    console.log(json);
+})
 
 async function buildTable() {
     const response = await fetch(api_url);
@@ -53,20 +66,3 @@ async function buildTable() {
 }
 
 buildTable();
-
-$(document).ready(function () {
-    $('.delete-form').on("click", function (e) {
-        e.preventDefault();
-        var id = $('#id').val;
-        $.ajax({
-            type: 'DELETE',
-            url: '/movies/' + id,
-            success: (data) => {
-                console.log(data);
-            },
-            error: (err) => {
-                console.log(error);
-            }
-        });
-    });
-});
