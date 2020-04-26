@@ -1,19 +1,15 @@
 /*
 code written by Mikhail in class, taken from https://github.com/mikhail-cct/CA1-In-class-Demo.git 
 and adapted to suit my project
-
 */
 html {
   position: relative;
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
-  /* Background image taken from google images, found on this link https://www.123rf.com/photo_7725498_background-for-movie-theme.html*/
   margin-bottom: 60px;
-  /* background-image: url("background.jpg"); */
-
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -25,7 +21,6 @@ body {
 }
 
 table, th, td {
-     /* border-collapse: collapse; */
      border: 1px solid #ddd;
      text-align: center;
      background-color: rgb(222, 221, 221, 0.4);
@@ -33,8 +28,6 @@ table, th, td {
 
  table {
      border-spacing: 0;
-     /* border-collapse: collapse; */
-     /* width:100%; */
 }
 
  td, th {

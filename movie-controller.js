@@ -1,3 +1,7 @@
+/*
+code written by Mikhail in class, taken from https://github.com/mikhail-cct/mongodb-test
+and adapted to suit my project
+*/
 var Movie = require('./models/movie');
 
 exports.createMovie = function(req, res) { 
